@@ -1,0 +1,111 @@
+{
+  "limites_aprovacao": [
+    {
+      "faixa": "Até R$ 2.000",
+      "aprovacao": "Automática pelo sistema",
+      "dias_uteis": 1
+    },
+    {
+      "faixa": "R$ 2.001 a R$ 10.000",
+      "aprovacao": "Gestor da área + Validação do Financeiro",
+      "dias_uteis": 3
+    },
+    {
+      "faixa": "Acima de R$ 10.000",
+      "aprovacao": "Gestor + Financeiro + Diretoria Executiva",
+      "dias_uteis": 7
+    }
+  ],
+  "orcamentos": [
+    {
+      "centro_custo": "TI – Infraestrutura",
+      "orcamento_mensal": 30000,
+      "disponivel": 12500,
+      "responsavel": "Carlos Silva (Diretor de TI)"
+    },
+    {
+      "centro_custo": "TI – Ferramentas",
+      "orcamento_mensal": 15000,
+      "disponivel": 7500,
+      "responsavel": "Carlos Silva (Diretor de TI)"
+    },
+    {
+      "centro_custo": "RH – Desenvolvimento",
+      "orcamento_mensal": 20000,
+      "disponivel": 5000,
+      "responsavel": "Ana Rodrigues (Gerente de RH)"
+    },
+    {
+      "centro_custo": "Facilities",
+      "orcamento_mensal": 15000,
+      "disponivel": 9000,
+      "responsavel": "Roberto Cardoso (Gerente de Facilities)"
+    },
+    {
+      "centro_custo": "Facilities - Home Office",
+      "orcamento_mensal": 8000,
+      "disponivel": 3200,
+      "responsavel": "Roberto Cardoso (Gerente de Facilities)"
+    },
+    {
+      "centro_custo": "Jurídico",
+      "orcamento_mensal": 10000,
+      "disponivel": 2000,
+      "responsavel": "Fernando Costa (Diretor Jurídico)"
+    },
+    {
+      "centro_custo": "Marketing",
+      "orcamento_mensal": 25000,
+      "disponivel": 18000,
+      "responsavel": "Carla Mendes (Diretora de Marketing)"
+    }
+  ],
+  "politicas_alertas": [
+    "Requisições que consumam mais de 80% do orçamento disponível devem ser sinalizadas ao time de Finanças",
+    "Quando não houver orçamento disponível, a compra deve ser reagendada para o próximo mês ou aprovada diretamente pela Diretoria com justificativa formal",
+    "O sistema bloqueia requisições que estouram o orçamento sem aprovação prévia",
+    "O sistema bloqueia requisições que não têm centro de custo informado",
+    "O sistema bloqueia requisições que ultrapassam limites de faixa sem aprovação de nível superior"
+  ],
+  "regras_fracionamento": [
+    "É proibido fracionar uma compra maior para se enquadrar em uma faixa de aprovação inferior",
+    "Fracionamentos legítimos devem estar vinculados a datas distintas",
+    "Fracionamentos legítimos devem ter justificativa técnica (ex: entregas em fases)"
+  ],
+  "regras_reagendamento": [
+    "Solicitações que não podem ser atendidas no orçamento atual devem ser movidas automaticamente para o ciclo orçamentário seguinte",
+    "Solicitações que não podem ser atendidas no orçamento atual devem gerar um alerta no dashboard financeiro"
+  ],
+  "regras_reembolso": [
+    "Não são reembolsados itens comprados fora do processo de requisição",
+    "Exceções só são válidas quando há falha sistêmica documentada",
+    "Exceções só são válidas quando a urgência da compra for comprovada (ex: incidente crítico)"
+  ],
+  "restricoes_especificas": [
+    {
+      "tipo": "Equipamentos acima de R$ 10.000",
+      "restricoes": [
+        "Cotação oficial de 3 fornecedores",
+        "Aprovação de conformidade técnica (TI)"
+      ]
+    },
+    {
+      "tipo": "Softwares com recorrência mensal",
+      "restricoes": [
+        "Validação com o time jurídico (cláusulas contratuais)",
+        "Previsão no orçamento anual"
+      ]
+    }
+  ],
+  "excecoes": [
+    "Justificativa formal no sistema",
+    "Aprovação expressa da Diretoria",
+    "Análise posterior pela área de Riscos e Auditoria"
+  ],
+  "outras_diretrizes": [
+    "Toda requisição deve ter um centro de custo associado",
+    "O agente financeiro deve registrar todas as decisões e recomendações no log de atendimento",
+    "Alertas automatizados serão enviados para gestores sempre que um orçamento atingir menos de 20% disponível",
+    "Alertas automatizados serão enviados para gestores sempre que uma requisição estiver pendente há mais de 5 dias úteis"
+  ]
+} 

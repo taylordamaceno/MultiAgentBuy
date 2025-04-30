@@ -1,0 +1,42 @@
+# Arquivos de ambiente
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Diretório virtual Python
+venv/
+env/
+ENV/
+
+# Arquivos de cache Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Arquivos de log
+*.log
+
+# Arquivos de banco de dados local
+*.db
+*.sqlite
+*.sqlite3
+chroma_db/
+
+# Diretórios do sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos de configuração do VS Code
+.vscode/
+.idea/
+
+# Arquivos de distribuição Python
+dist/
+build/
+*.egg-info/
+
+# Jupyter Notebook
+.ipynb_checkpoints 
