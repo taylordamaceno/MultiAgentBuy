@@ -60,7 +60,7 @@ Assim, o usuário recebe uma resposta completa que considera tanto aspectos de p
 git clone <url-do-repositorio>
 
 # Navegar até o diretório
-cd agent_poc_procurement
+cd multi_AI_agent_langchain
 
 # Criar e ativar ambiente virtual
 python -m venv venv
@@ -71,7 +71,7 @@ pip install -r requirements.txt
 
 # Configurar variáveis de ambiente
 cp .env.example .env
-# Edite o arquivo .env com suas credenciais
+# Edite o arquivo .env com suas credenciais da OpenAI
 ```
 
 ### Execução
@@ -108,6 +108,24 @@ Planos para expansão do sistema:
 - Adição de um agente de fornecedores para sugerir vendedores homologados
 - Implementação de um agente de aprovação para acompanhar status de solicitações
 - Interface web para acesso mais amigável
+
+---
+
+## 💼 Potencial em Ambiente Produtivo
+
+Este projeto demonstra o conceito de multi-agentes cooperativos, mas em um ambiente produtivo real, o potencial é muito maior:
+
+- **Integração com Sistemas Corporativos**: Os agentes poderiam consultar APIs e bases de dados reais da empresa (ERP, CRM, sistemas financeiros), mantendo a mesma lógica de cooperação e delegação.
+
+- **Frameworks de Orquestração**: Com ferramentas como LangChain e similares, podemos orquestrar fluxos mais complexos, percorrendo diferentes ferramentas e fontes de dados conforme necessário.
+
+- **Interfaces Amigáveis**: A integração com frontends como Slack, Microsoft Teams ou interfaces web personalizadas torna-se simples, permitindo que os colaboradores interajam com os agentes de forma natural em seus ambientes de trabalho.
+
+- **Tomada de Decisão Assistida**: Os LLMs como base destes agentes permitem automação de análises complexas com esforço médio de implementação, liberando tempo de especialistas para tarefas que realmente exigem intervenção humana.
+
+- **Escalabilidade**: Novos agentes especializados podem ser adicionados para expandir as capacidades do sistema (jurídico, RH, logística, compliance) sem redesenhar a arquitetura central.
+
+Esta abordagem multi-agente representa um equilíbrio entre sistemas monolíticos simples e arquiteturas complexas, oferecendo uma via prática para implementar IA generativa em processos corporativos.
 
 ---
 
