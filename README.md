@@ -31,6 +31,152 @@ A solução utiliza um sistema de múltiplos agentes especializados com integra�
 
 ---
 
+## 🧠 O que é RAG e Como Funciona?
+
+RAG (Retrieval Augmented Generation) é uma técnica que combina busca de informações com geração de texto para criar respostas mais precisas e contextualizadas. Vamos entender como funciona no nosso sistema:
+
+### 1️⃣ O Problema que o RAG Resolve
+
+Imagine que você pergunta: "Posso comprar um notebook de R$ 15.000?"
+
+**Sem RAG:**
+- O modelo teria que "adivinhar" a resposta
+- Poderia inventar regras que não existem
+- Não teria acesso ao contexto específico da sua empresa
+
+**Com RAG:**
+1. O sistema busca nos documentos da empresa
+2. Encontra as regras relevantes sobre compras de notebooks
+3. Localiza informações sobre aprovações acima de R$ 10.000
+4. Gera uma resposta precisa baseada nessas informações
+
+### 2️⃣ Como o RAG Funciona em 3 Passos
+
+#### Passo 1: Divisão Inteligente (Chunking)
+```
+Documento Original:
+"Compras acima de R$ 10.000 precisam de aprovação da diretoria..."
+
+↓
+
+Chunks:
+- Chunk 1: "Compras acima de R$ 10.000..."
+- Chunk 2: "Aprovação da diretoria..."
+```
+
+#### Passo 2: Busca Semântica
+```
+Pergunta: "Posso comprar um notebook de R$ 15.000?"
+
+↓
+
+Sistema busca chunks relevantes:
+- Chunk sobre limites de aprovação
+- Chunk sobre compras de equipamentos
+- Chunk sobre processos de aprovação
+```
+
+#### Passo 3: Geração de Resposta
+```
+Chunks encontrados + Pergunta original
+↓
+Resposta contextualizada e precisa
+```
+
+### 3️⃣ Exemplo Prático
+
+**Pergunta:** "Quero comprar uma cadeira ergonômica de R$ 1.800, há orçamento disponível?"
+
+**Processo RAG:**
+1. **Busca:**
+   - Encontra chunk sobre mobiliário
+   - Localiza regras de orçamento
+   - Identifica centro de custo correto
+
+2. **Contexto:**
+   ```
+   - Regra: "Mobiliário precisa de justificativa ergonômica"
+   - Orçamento: "Facilities tem R$ 9.000 disponível"
+   - Processo: "Aprovação automática até R$ 2.000"
+   ```
+
+3. **Resposta:**
+   "Sim, você pode comprar a cadeira. O valor está dentro do limite de aprovação automática (R$ 2.000) e há orçamento disponível em Facilities (R$ 9.000). Lembre-se de incluir a justificativa ergonômica no pedido."
+
+### 4️⃣ Benefícios do RAG
+
+- **Precisão:** Respostas baseadas em documentos reais
+- **Contexto:** Considera regras específicas da empresa
+- **Atualização:** Fácil atualização de regras e processos
+- **Transparência:** Respostas podem ser verificadas nas fontes
+- **Consistência:** Mantém o tom e estilo da empresa
+
+### 5️⃣ Exemplos de Perguntas que o RAG Melhora
+
+1. **Pergunta:** "Qual o processo para comprar um software de R$ 8.500?"
+   - RAG encontra regras específicas de software
+   - Localiza processo de aprovação correto
+   - Verifica requisitos de licenciamento
+
+2. **Pergunta:** "Preciso de aprovação para um treinamento de R$ 20.000?"
+   - RAG identifica regras de treinamento
+   - Encontra limites de orçamento
+   - Localiza processo de aprovação especial
+
+3. **Pergunta:** "Como solicitar um monitor ultrawide?"
+   - RAG encontra regras de equipamentos
+   - Identifica centro de custo correto
+   - Localiza processo de aprovação
+
+---
+
+## 🧠 Implementação RAG (Retrieval Augmented Generation)
+
+O sistema implementa RAG para melhorar a precisão e relevância das respostas:
+
+### 1️⃣ Processamento de Dados
+- **Chunking Inteligente**:
+  - Divisão do `politica.md` em seções e parágrafos
+  - Divisão estruturada do `finance_rules.json`
+  - Tamanho de chunk configurável (1000 caracteres com overlap de 200)
+
+- **Embeddings**:
+  - Geração via OpenAI ada-002
+  - Armazenamento otimizado
+  - Sistema de cache
+
+- **Metadata**:
+  - Seção e categoria
+  - Nível de importância
+  - Fonte e data
+  - Keywords automáticas
+
+### 2️⃣ Busca Semântica
+- Índice FAISS para busca rápida
+- Similaridade coseno
+- Top-3 chunks mais relevantes
+- Filtragem por metadata
+
+### 3️⃣ Geração de Respostas
+- Contexto enriquecido com chunks relevantes
+- Sistema de prompt engineering
+- Respostas baseadas em evidências
+- Prevenção de alucinações
+
+### 4️⃣ Arquivos de Implementação
+- `rag_config.json` - Configurações do sistema RAG
+- `process_policy.py` - Processamento do arquivo de política
+- `process_finance.py` - Processamento do arquivo financeiro
+- `generate_embeddings.py` - Geração de embeddings
+- `rag_agent.py` - Agente principal com RAG
+
+### 5️⃣ Diretórios de Dados
+- `data/chunks/` - Chunks processados
+- `data/embeddings/` - Embeddings gerados
+- `data/metadata/` - Índices e metadata
+
+---
+
 ## 🧠 Como os Agentes se Integram
 
 O `procurement_agent` funciona como entrypoint principal. Quando ele identifica uma necessidade de avaliação financeira (ex: menção a valor, orçamento, etc.), ele chama internamente o `finance_agent` com os parâmetros relevantes.

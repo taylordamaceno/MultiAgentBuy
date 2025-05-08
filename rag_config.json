@@ -1,0 +1,30 @@
+{
+    "chunk_settings": {
+        "chunk_size": 1000,
+        "chunk_overlap": 200,
+        "separators": ["\n\n", "\n", ".", "!", "?", ";", ":", " ", ""]
+    },
+    "embedding_settings": {
+        "model": "text-embedding-ada-002",
+        "dimensions": 1536,
+        "batch_size": 100
+    },
+    "metadata_fields": [
+        "section",
+        "category",
+        "importance",
+        "last_updated",
+        "source",
+        "keywords"
+    ],
+    "index_settings": {
+        "type": "faiss",
+        "metric": "cosine",
+        "n_neighbors": 4
+    },
+    "cache_settings": {
+        "enabled": true,
+        "ttl": 86400,
+        "max_size": 1000
+    }
+} 
