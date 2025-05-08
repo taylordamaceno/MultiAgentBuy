@@ -6,7 +6,7 @@ from tqdm import tqdm
 import time
 
 def load_config() -> Dict:
-    with open('rag_config.json', 'r') as f:
+    with open('config/rag_config.json', 'r') as f:
         return json.load(f)
 
 def get_embedding(text: str, config: Dict) -> List[float]:
